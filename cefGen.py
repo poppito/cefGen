@@ -7,10 +7,12 @@ class cefGen(object):
 		if not filename:
 			self.readFile()
 
-	def outputWrite(self, output, port):
+	def outputWrite(self, output, port, IP):
+		if not IP:
+			IP = ''
 		TCP_PORT = int(port)
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                s.connect(('', TCP_PORT))
+                s.connect((IP, TCP_PORT))
                 s.send(output)
                 s.close()
 
@@ -19,6 +21,7 @@ class cefGen(object):
 		print "path is " + path
 		print "Today we'll be generating a 0.33 EPS load of CEF events to a TCP socket on this host!"
 		port = raw_input("What port would you like to send this load to? Remember this value can only be between 0-65535, preferably higher than 1024! ")
+		IP = raw_input("What would you like the target IP to be? Default is localhost!  ")
 		filename = raw_input("What is the filename? Remember, the file should be in the same directory as this script! ")
 		filename = path + "/" + filename
 		cefFile = open(filename)
@@ -27,7 +30,7 @@ class cefGen(object):
 			time.sleep(3)
 			print line
 			print "Sending event through to TCP port " + port
-			self.outputWrite(line, port)
+			self.outputWrite(line, port, IP)
 		f.close()
 
 def main():
