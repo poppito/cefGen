@@ -20,16 +20,16 @@ What it doesn't do:
 usage:
 python cefGen.py
 
-Example: 
+Example:
 
-python cefGen.py 
-path is /home/cefuser/cefGen
+python cefGen.py
+[esuser@centlogs cefGen]$ python cefGen.py
+path is /home/esuser/cefGen
 Today we'll be generating a 0.33 EPS load of CEF events to a TCP socket on this host!
 What port would you like to send this load to? Remember this value can only be between 0-65535, preferably higher than 1024! 513
+What would you like the target IP to be? Default is localhost!  10.10.10.1
 What is the filename? Remember, the file should be in the same directory as this script! outfile1.cef
 about to print event
-<Prints event> 
+<Prints event>
 Sending event through to TCP port 513
 <Sends event>
-
-
